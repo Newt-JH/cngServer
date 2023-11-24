@@ -14,7 +14,7 @@ var productRouter = require('./routes/product');
 var productListRouter = require('./routes/productList');
 var productSerchRouter = require('./routes/productSearch');
 var categoryRouter = require('./routes/category');
-
+const cors = require('cors');
 
 
 var app = express();
@@ -29,7 +29,7 @@ connection.connect((err) => {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
