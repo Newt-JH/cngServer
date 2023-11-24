@@ -6,7 +6,7 @@ const connection = mysql.createConnection(config);
 // GET /api/users
 router.get('/', (req, res) => {
     const productID = req.query.productID;
-  connection.query(`select * from product where productID = ${productID}`, (err, results) => {
+  connection.query(`select * from productImage where productID = ${productID}`, (err, results) => {
     if (err) {
       res.status(500).json({ error: 'Error fetching data from the database' });
       return;
