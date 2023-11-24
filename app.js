@@ -8,6 +8,11 @@ const config = require('./config/database'); // config 파일 불러오기
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productstatusRouter = require('./routes/productstatus');
+var contactRouter = require('./routes/contact');
+var faqRouter = require('./routes/faq');
+var productRouter = require('./routes/product');
+var productListRouter = require('./routes/productList');
+var productSerchRouter = require('./routes/productSearch');
 
 
 
@@ -34,6 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/productstatus', productstatusRouter);
+app.use('/contact', contactRouter);
+app.use('/faq', faqRouter);
+app.use('/product', productRouter);
+app.use('/productList', productListRouter);
+app.use('/productSerch', productSerchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
