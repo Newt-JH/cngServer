@@ -13,7 +13,7 @@ var faqRouter = require('./routes/faq');
 var productRouter = require('./routes/product');
 var productListRouter = require('./routes/productList');
 var productSerchRouter = require('./routes/productSearch');
-
+var categoryRouter = require('./routes/category');
 
 
 
@@ -44,6 +44,7 @@ app.use('/faq', faqRouter);
 app.use('/product', productRouter);
 app.use('/productList', productListRouter);
 app.use('/productSerch', productSerchRouter);
+app.use('/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
