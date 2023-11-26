@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const bodyParser = require('body-parser');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -15,6 +16,8 @@ var productImageRouter = require('./routes/productImage');
 var productListRouter = require('./routes/productList');
 var productSerchRouter = require('./routes/productSearch');
 var categoryRouter = require('./routes/category');
+var contactInsertRouter = require('./routes/contactInsert');
+var productInsertRouter = require('./routes/productInsert');
 const cors = require('cors');
 
 
@@ -47,12 +50,15 @@ app.use('/productImage', productImageRouter);
 app.use('/productList', productListRouter);
 app.use('/productSerch', productSerchRouter);
 app.use('/category', categoryRouter);
-
+app.use('/contactInsert', contactInsertRouter);
+app.use('/productInsert', productInsertRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
+// 페이로드 크기 늘리기
+app.use(bodyParser.json({ limit: '3000mb' }));
+app.use(bodyParser.urlencoded({ limit: '3000mb', extended: true }));
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
