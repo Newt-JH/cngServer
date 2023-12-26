@@ -14,6 +14,14 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: 'Error fetching data from the database' });
       return;
     }
+
+    const insertedProductId = results.insertId;
+    imageList.map((data) => {
+      connection.query(`insert into productImage(productID, imageLink) VALUE ('${insertedProductId}','${data}')`, (err, result) => {
+        return;
+      })
+    })
+    
     res.json(results);
   });
 });
